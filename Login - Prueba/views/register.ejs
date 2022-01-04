@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/estiloss.css">
+    <title>Ingreso de datos</title>
+</head>
+
+<body style="background-image: url('resources/images/degradado.jpg');">
+    <header class="hero">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <a href="/" class="nav__title">HorariosFacci</a>
+            </div>
+
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="" class="nav__links">Contáctenos</a>
+                </li>
+                <li class="nav__items">
+                    <a href="login" class="nav__links">Iniciar sesión</a>
+                </li>
+                <li class="nav__items">
+                    <a href="register" class="nav__links">Registrarse</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="caja-registro" method="post" name="form1">
+            <h4>Ingrese sus datos para registrarse</h4>
+            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombres" autofocus>
+            <span id="n-error" aria-live="assertive"></span>
+
+            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
+            <span id="a-error" aria-live="assertive"></span>
+
+            <input class="controls" type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Usuario">
+            <span id="c-error" aria-live="assertive"></span>
+
+            <input class="controls" type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
+            <span id="p-error" aria-live="assertive"></span>
+
+            <input class="controls" type="password" name="contrasena2" id="contrasena2"
+                placeholder="Confirmar contraseña">
+            <span id="p2-error" aria-live="assertive"></span>
+
+            <select name="rol" id="rol" class="select">
+                <option value="0" selected disabled>Seleccione el rol</option>
+                <option value="docente">Docente</option>
+                <option value="estudiante">Estudiante</option>
+            </select>
+
+            <input class="controls" type="email" name="correo" id="correo" placeholder="E-mail">
+            <span id="c2-error" aria-live="assertive"></span>
+
+            <input class="controls" type="text" name="direccion" id="direccion" placeholder="Dirección">
+            <span id="d-error" aria-live="assertive"></span>
+
+            <input type="submit" class="send-button" value="Registrar">
+            <span id="s-error" aria-live="assertive"></span>
+        </form>
+    </main>
+    <footer class="footer">
+        <section class="footer__copy container">
+            <div class="footer__social">
+                <a href="#" class="footer__icons"><img src="resources/images/facebook.svg" class="footer__img"></a>
+                <a href="#" class="footer__icons"><img src="resources/images/twitter.svg" class="footer__img"></a>
+                <a href="#" class="footer__icons"><img src="resources/images/youtube.svg" class="footer__img"></a>
+            </div>
+            <h3 class="footer__copyright">Derechos reservados &copy; HorariosFacci</h3>
+        </section>
+    </footer>
+    <script src="resources/js/validacion_registro.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (typeof alert !="undefined" ) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(() => {
+                    window.location = '/<%= ruta %>'
+                })
+        </script>
+    <% } %>
+
+</body>
+
+</html>
