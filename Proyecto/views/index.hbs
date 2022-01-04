@@ -1,0 +1,51 @@
+{{#ife rol 1}}
+    <section class="hero__container container">
+        <h1 class="hero__title">Gestiona tus horarios</h1>
+        <p class="hero__paragraph"></p>
+        <a href="/nuevohorario" class="cta" id="comienzo">Comienza ahora</a>
+    </section>
+{{else}}
+    {{#ife rol 0}}
+        <section class="hero__container container">
+            <h1 class="hero__title">Gestiona tus horarios</h1>
+            <p class="hero__paragraph"></p>
+            <a href="/vistausuario" class="cta" id="comienzo">Comienza ahora</a>
+        </section>
+    {{else}}
+        <section class="hero__container container">
+            <h1 class="hero__title">Gestiona tus horarios</h1>
+            <p class="hero__paragraph"></p>
+            <a href="/login" class="cta" id="comienzo">Comienza ahora</a>
+        </section>
+    {{/ife}}
+{{/ife}}
+
+<main>
+    <section class="container about">
+        <h2 class="subtitle">Beneficios de preferirnos</h2>
+
+        <div class="about__main">
+            <article class="about__icons">
+                <img src="img/horario.png" class="about__icon" />
+                <h3 class="about__title">Fácil de utilizar</h3>
+                <p class="about__paragrah">El usuario no tiene más que pulsar un
+                    botón al inicio de su jornada laboral, y volver a hacer clic
+                    al finalizarla</p>
+            </article>
+
+            <article class="about__icons">
+                <img src="img/notificacion.svg" class="about__icon" />
+                <h3 class="about__title">Alertas</h3>
+                <p class="about__paragrah">Aviso por medio de notificaciones
+                    acerca de los horarios escogidos.</p>
+            </article>
+
+            <article class="about__icons">
+                <img src="img/planificacion.svg" class="about__icon" />
+                <h3 class="about__title">Mejor planificacion</h3>
+                <p class="about__paragrah">Tenga organizado toda tu agenda para
+                    no perderte ningun horario.</p>
+            </article>
+        </div>
+    </section>
+</main>

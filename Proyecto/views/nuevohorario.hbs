@@ -1,0 +1,50 @@
+<div class="container mt-5" style="width: 30%">
+    <div class="card mb-5">
+        <div class="card-header text-center">Gestion de Horarios</div>
+        <div class="card-body">
+            
+            <form id="Horario" action="/nuevohorario" method="post">
+
+                <h4 class="text-center">Nombre del docente</h4>
+                <div class="input-group mb-3 select">
+                    <select name="nombres" id="nombred" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        {{#each docente}}
+                        <option value="{{id_usuario}}">{{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <span id="n-error" aria-live="assertive"></span>
+
+                <h4 class="text-center">Escoja la carrera</h4>
+                <div class="input-group mb-3 select">
+                    <select name="carrera" id="carrera" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        <option value="IES">Ing. en Sistemas</option>
+                        <option value="ITI">Ing. en Tecnologías de la información</option>
+                    </select>
+
+                </div>
+                <span id="c-error" aria-live="assertive"></span>
+
+                <h4 class="text-center">Escoja el Nivel</h4>
+                <div class="input-group mb-3 select">
+                    <select name="nivel" id="nivel" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        {{#each nivel}}
+                        <option value="{{id_nivel}}">{{nomb_nivel}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <span id="nv-error" aria-live="assertive"></span>
+
+                <div class="text-center py-3">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">
+                        Siguiente
+                    </button>
+                </div>
+                
+                </form>
+        </div>
+    </div>
+</div>

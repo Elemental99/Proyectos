@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^3.0.0",
+    "handlebars-helpers": "^0.10.0",
+    "hbs": "^4.2.0",
+    "init": "^0.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "name": "proyecto-apli",
+  "version": "1.0.0",
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

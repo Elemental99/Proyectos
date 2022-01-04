@@ -1,0 +1,64 @@
+<div class="container mt-5" style="width: 30%">
+    <div class="card mb-5">
+        <div class="card-header text-center">Gestion de Horarios</div>
+        <div class="card-body">
+            <form id="caja-horario2" action="/GenerarHorario" method="post">
+                <h4>Cree un nuevo horario</h4>
+
+
+                <h4 class="text-center">Escoja el paralelo</h4>
+                <div class="input-group mb-3 select">
+                    <select name="paralelo" id="paralelo" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        {{#each paralelo}}
+                        <option value="{{id_paralelo}}">{{paralelo}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <span id="p-error" aria-live="assertive"></span>
+
+                <h4 class="text-center">Escoja la asignatura</h4>
+                <div class="input-group mb-3 select">
+                    <select name="materia" id="materia" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        {{#each materia}}
+                        <option value="{{id_materia}}">{{nomb_materia}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <span id="a-error" aria-live="assertive"></span>
+
+                <h4 class="text-center">Seleccione los días de la actividad</h4>
+                <h5 class="text-center">Fecha</h5>
+
+                <div class="input-group mb-3 select">
+                    <select name="dia_s" id="dia_s" class="form-select">
+                        <option value="0" selected disabled>Elige una opción</option>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miercoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                    </select>
+                </div>
+
+                <h4 class="text-center">Seleccione las horas</h4>
+                <div class="md-form my-3">
+                    <label for="inputMDEx1">Hora Inicio</label>
+                    <input type="time" id="hora_inicio" class="form-control" name="hora_inicio">
+                </div>
+
+                <div class="md-form my-3">
+                    <label for="inputMDEx1">Hora Fin</label>
+                    <input type="time" id="hora_fin" class="form-control" name="hora_fin">
+                </div>
+
+                <div class="text-center py-3">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">
+                        Generar Horario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
