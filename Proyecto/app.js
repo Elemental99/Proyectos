@@ -10,9 +10,6 @@ const app = express();
 //Invocamos a dotenv: Variables de entorno
 dotenv.config({ path: "./env/.env" });
 
-//Invocamos modulo de la conexion a DB
-// const db = require("./database/db");
-
 app.set("views", path.join(__dirname, "views"));
 app.engine(
     ".hbs",
