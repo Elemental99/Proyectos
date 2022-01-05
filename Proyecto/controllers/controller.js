@@ -120,11 +120,11 @@ exports.login = async (req, res) => {
                         const cookiesOption = {
                             expires: new Date(
                                 Date.now() +
-                                process.env.JWT_COOKIE_EXPIRE *
-                                24 *
-                                60 *
-                                60 *
-                                1000
+                                    process.env.JWT_COOKIE_EXPIRE *
+                                        24 *
+                                        60 *
+                                        60 *
+                                        1000
                             ),
                             httpOnly: true,
                         };
@@ -150,7 +150,7 @@ exports.isAuthenticated = async (req, res, next) => {
             );
             await db.query(
                 "SELECT * FROM usuario INNER JOIN rol ON usuario.id_rol = rol.id_rol " +
-                "WHERE id_usuario = ?",
+                    "WHERE id_usuario = ?",
                 [decodify.id_usuario],
                 (error, results) => {
                     if (!results) {
@@ -211,15 +211,13 @@ exports.editar = (req, res) => {
                     if (error) {
                         console.log(error);
                     } else {
-                        
-                        
                         return res.render("profile", {
                             nombre_usuario: req.nombre_usuario,
                             message: "Datos Actualizados",
                         });
                     }
-                    req.dato = results[0]
-                    console.log(req.dato)
+                    req.dato = results[0];
+                    console.log(req.dato);
                 }
             );
         }
@@ -264,71 +262,80 @@ exports.contact = (req, res) => {
 
 //Consulta
 exports.consultNuevoHorario = (req, res) => {
-    db.query(
-        "SELECT * FROM usuario WHERE id_rol = 2",
-        (error, results) => {
+    db.query("SELECT * FROM usuario WHERE id_rol = 2", (error, results) => {
+        if (error) {
+            console.log(error);
+        }
+        req.docente = results;
+        db.query("SELECT * FROM nivel", (error, resp) => {
             if (error) {
                 console.log(error);
             }
-            req.docente = results;
-            db.query('SELECT * FROM nivel', (error, resp) => {
-                if (error) {
-                    console.log(error);
-                }
-                req.nivel = resp;
-                res.render("nuevohorario", {
-                    nombre_usuario: req.nombre_usuario,
-                    docente: req.docente,
-                    nivel: req.nivel
-                })
+            req.nivel = resp;
+            res.render("nuevohorario", {
+                nombre_usuario: req.nombre_usuario,
+                docente: req.docente,
+                nivel: req.nivel,
             });
-        }
-    );
-}
+        });
+    });
+};
 
 //Consulta Generar Horario
 exports.consultGenerar = (req, res) => {
-    const { nivel } = req.body
+    const { nivel } = req.body;
     db.query(
-        "SELECT * FROM paralelo WHERE id_nivel = ?", [nivel],
+        "SELECT * FROM paralelo WHERE id_nivel = ?",
+        [nivel],
         (error, results) => {
             if (error) {
                 console.log(error);
             }
             req.paralelo = results;
-            db.query('SELECT * FROM materia WHERE id_nivel = ?', [nivel], (error, resp) => {
-                if (error) {
-                    console.log(error);
+            db.query(
+                "SELECT * FROM materia WHERE id_nivel = ?",
+                [nivel],
+                (error, resp) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                    req.materia = resp;
+                    res.render("GenerarHorario", {
+                        nombre_usuario: req.nombre_usuario,
+                        paralelo: req.paralelo,
+                        materia: req.materia,
+                    });
                 }
-                req.materia = resp;
-                res.render('GenerarHorario', {
-                    nombre_usuario: req.nombre_usuario,
-                    paralelo: req.paralelo,
-                    materia: req.materia
-                })
-            });
+            );
         }
     );
-}
+};
 
 //Generar Horario
 exports.GenerarHorario = (req, res) => {
-    const { hora_inicio, hora_fin, materia, dia_s } = req.body
+    const { hora_inicio, hora_fin, materia, dia_s } = req.body;
     if (!hora_fin || !hora_inicio || !materia || !dia_s) {
         res.render("GenerarHorario", {
             message: "Ingrese todos los campos",
         });
     } else {
-        db.query('INSERT INTO horario set ?',
-            { id_materia: materia, dia_s: dia_s, hora_ini: hora_inicio, hora_fin: hora_fin },
+        db.query(
+            "INSERT INTO horario set ?",
+            {
+                id_materia: materia,
+                dia_s: dia_s,
+                hora_ini: hora_inicio,
+                hora_fin: hora_fin,
+            },
             (error, results) => {
                 if (error) {
-                    console.log(error)
+                    console.log(error);
                 }
-                res.render('nuevohorario', {
+                res.render("nuevohorario", {
                     nombre_usuario: req.nombre_usuario,
-                    message: 'Horario generado'
-                })
-            })
+                    message: "Horario generado",
+                });
+            }
+        );
     }
-}
+};

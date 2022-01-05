@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const authController = require("../controllers/auth");
+const authController = require("../controllers/controller");
 
 router.get("/", authController.isAuthenticated, (req, res) => {
     res.render("index", {

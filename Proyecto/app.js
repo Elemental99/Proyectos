@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Define routes
-app.use("/", require("./routes/auth"));
+app.use("/", require("./routes/router"));
 
 //Para eliminar el cache y que no se pueda volver con el boton de back
 app.use(function (req, res, next) {
