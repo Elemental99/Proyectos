@@ -382,9 +382,17 @@ exports.AsignarHorario = (req, res) => {
         id_horario: horario,
         id_usuario: usuario,
     };
-    db.query("INSERT INTO horario_asignado SET ?", [datos]);
-    res.render("AsignarHorario", {
-        nombre_usuario: req.nombre_usuario,
-        message: "Horario asignado",
-    });
+    db.query(
+        "INSERT INTO horario_asignado SET ?",
+        [datos],
+        (error, results) => {
+            if (error) {
+                console.log(error);
+            }
+            res.render("AsignarHorario", {
+                nombre_usuario: req.nombre_usuario,
+                message: "Horario asignado",
+            });
+        }
+    );
 };
