@@ -229,7 +229,14 @@ exports.editar = (req, res) => {
 //Consulta de horario
 exports.consultvista = async (req, res) => {
     db.query(
-        "SELECT * FROM nivel INNER JOIN paralelo p ON nivel.id_nivel = p.id_nivel",
+        "SELECT * FROM horario_asignado ha " +
+            "INNER JOIN horario h ON ha.id_horario = h.id_horario " +
+            "INNER JOIN materia m ON m.id_materia = h.id_materia " +
+            "INNER JOIN nivel n ON n.id_nivel = m.id_nivel " +
+            "INNER JOIN paralelo p ON p.id_nivel = n.id_nivel " +
+            "INNER JOIN usuario u ON u.id_usuario = ha.id_usuario " +
+            "WHERE u.id_usuario = ?",
+        [req.nombre_usuario.id_usuario],
         (error, results) => {
             if (error) {
                 console.log(error);
@@ -238,6 +245,7 @@ exports.consultvista = async (req, res) => {
                 res.render("vistausuario", {
                     nombre_usuario: req.nombre_usuario,
                     datos: req.datos,
+                    rol: req.estud,
                 });
             }
         }
@@ -338,4 +346,45 @@ exports.GenerarHorario = (req, res) => {
             }
         );
     }
+};
+
+//Consulta Asignar Horario
+exports.consultAsignar = (req, res) => {
+    db.query(
+        "SELECT * FROM usuario u inner join rol r on u.id_rol = r.id_rol WHERE u.id_rol = 1 or u.id_rol = 2",
+        (error, results) => {
+            if (error) {
+                console.log(error);
+            }
+            req.usuario = results;
+            console.log(req.usuario);
+            db.query("SELECT * FROM horario", (error, result) => {
+                if (error) {
+                    console.log(error);
+                }
+                req.horario = result;
+                console.log(req.horario);
+                res.render("AsignarHorario", {
+                    nombre_usuario: req.nombre_usuario,
+                    usuario: req.usuario,
+                    horario: req.horario,
+                });
+            });
+        }
+    );
+};
+
+//Asignar Horario
+exports.AsignarHorario = (req, res) => {
+    const { horario, usuario } = req.body;
+    console.log(horario, usuario);
+    const datos = {
+        id_horario: horario,
+        id_usuario: usuario,
+    };
+    db.query("INSERT INTO horario_asignado SET ?", [datos]);
+    res.render("AsignarHorario", {
+        nombre_usuario: req.nombre_usuario,
+        message: "Horario asignado",
+    });
 };

@@ -3,7 +3,7 @@
         <div class="card-header text-center">Gestion de Horarios</div>
         <div class="card-body">
             <form id="caja-horario2" action="/GenerarHorario" method="post">
-                <h4>Cree un nuevo horario</h4>
+                <h4 class="text-center">Cree un nuevo horario</h4>
 
                 <h4 class="text-center">Escoja el paralelo</h4>
                 <div class="input-group mb-3 select">
@@ -16,7 +16,6 @@
                         {{/each}}
                     </select>
                 </div>
-                <span id="p-error" aria-live="assertive"></span>
 
                 <h4 class="text-center">Escoja la asignatura</h4>
                 <div class="input-group mb-3 select">
@@ -29,7 +28,6 @@
                         {{/each}}
                     </select>
                 </div>
-                <span id="a-error" aria-live="assertive"></span>
 
                 <h4 class="text-center">Seleccione los días de la actividad</h4>
                 <h5 class="text-center">Fecha</h5>

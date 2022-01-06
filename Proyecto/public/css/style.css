@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Lora", sans-serif !important;
 }
 
 /* Menu */
@@ -24,7 +24,8 @@ nav li {
     list-style: none;
 }
 
-nav li a {
+nav li a,
+.estilo {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -33,7 +34,8 @@ nav li a {
     align-items: center;
 }
 
-nav li a:hover {
+nav li a:hover,
+.estilo:hover {
     color: rgb(65, 194, 140);
     text-decoration: none;
 }

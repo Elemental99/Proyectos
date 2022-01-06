@@ -20,18 +20,21 @@ router.get("/profile", authController.isAuthenticated, (req, res) => {
     res.render("profile", {
         nombre_usuario: req.nombre_usuario,
         dato: req.dato,
+        rol: req.estud,
     });
 });
 
 router.get("/contact", authController.isAuthenticated, (req, res) => {
     res.render("contact", {
         nombre_usuario: req.nombre_usuario,
+        rol: req.estud,
     });
 });
 
-router.get("/actualizar", [authController.isAuthenticated], (req, res) => {
+router.get("/actualizar", authController.isAuthenticated, (req, res) => {
     res.render("actualizar", {
         nombre_usuario: req.nombre_usuario,
+        rol: req.estud,
     });
 });
 
@@ -45,11 +48,16 @@ router.get("/vistausuario", [
     authController.consultvista,
 ]);
 
-router.get("/GenerarHorario", [authController.isAuthenticated], (req, res) => {
+router.get("/GenerarHorario", authController.isAuthenticated, (req, res) => {
     res.render("GenerarHorario", {
         nombre_usuario: req.nombre_usuario,
     });
 });
+
+router.get("/AsignarHorario", [
+    authController.isAuthenticated,
+    authController.consultAsignar,
+]);
 
 router.get("/logout", authController.logout);
 
@@ -75,6 +83,11 @@ router.post("/nuevohorario", [
 router.post("/GenerarHorario", [
     authController.isAuthenticated,
     authController.GenerarHorario,
+]);
+
+router.post("/AsignarHorario", [
+    authController.isAuthenticated,
+    authController.AsignarHorario,
 ]);
 
 module.exports = router;

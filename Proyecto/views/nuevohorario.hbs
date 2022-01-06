@@ -10,11 +10,11 @@
                     <select name="nombres" id="nombred" class="form-select">
                         <option value="0" selected disabled>Elige una opción</option>
                         {{#each docente}}
-                            <option value="{{id_usuario}}">{{nombre}}</option>
+                            <option value="{{id_usuario}}">{{nombre}}
+                                {{apellido}}</option>
                         {{/each}}
                     </select>
                 </div>
-                <span id="n-error" aria-live="assertive"></span>
 
                 <h4 class="text-center">Escoja la carrera</h4>
                 <div class="input-group mb-3 select">
@@ -26,7 +26,6 @@
                     </select>
 
                 </div>
-                <span id="c-error" aria-live="assertive"></span>
 
                 <h4 class="text-center">Escoja el Nivel</h4>
                 <div class="input-group mb-3 select">
@@ -37,7 +36,6 @@
                         {{/each}}
                     </select>
                 </div>
-                <span id="nv-error" aria-live="assertive"></span>
 
                 <div class="text-center py-3">
                     <button
