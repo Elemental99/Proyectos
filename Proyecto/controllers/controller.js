@@ -356,7 +356,6 @@ exports.consultAsignar = (req, res) => {
                 console.log(error);
             }
             req.usuario = results;
-            console.log(req.usuario);
             db.query("SELECT * FROM horario", (error, result) => {
                 if (error) {
                     console.log(error);
@@ -376,7 +375,6 @@ exports.consultAsignar = (req, res) => {
 //Asignar Horario
 exports.AsignarHorario = (req, res) => {
     const { horario, usuario } = req.body;
-    console.log(horario, usuario);
     const datos = {
         id_horario: horario,
         id_usuario: usuario,
