@@ -195,6 +195,7 @@ exports.editar = (req, res) => {
             nombre,
             apellido,
             contrasena,
+            nombre_usuario,
             correo,
             direccion,
         };
@@ -205,8 +206,8 @@ exports.editar = (req, res) => {
             });
         } else {
             db.query(
-                "UPDATE usuario SET ? WHERE nombre_usuario = ?",
-                [datos, nombre_usuario],
+                "UPDATE usuario SET ? WHERE id_usuario = ?",
+                [datos, req.nombre_usuario.id_usuario],
                 (error, results) => {
                     if (error) {
                         console.log(error);
@@ -216,8 +217,6 @@ exports.editar = (req, res) => {
                             message: "Datos Actualizados",
                         });
                     }
-                    req.dato = results[0];
-                    console.log(req.dato);
                 }
             );
         }
