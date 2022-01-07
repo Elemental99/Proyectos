@@ -361,7 +361,6 @@ exports.consultAsignar = (req, res) => {
                     console.log(error);
                 }
                 req.horario = result;
-                console.log(req.horario);
                 res.render("AsignarHorario", {
                     nombre_usuario: req.nombre_usuario,
                     usuario: req.usuario,
