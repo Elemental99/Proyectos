@@ -4,7 +4,7 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
-
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 //Invocamos a dotenv: Variables de entorno
@@ -53,6 +53,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.listen(4000, () => {
-    console.log("Server started on port http://localhost:4000");
+app.listen(PORT, () => {
+    console.log(`Server started on port http://localhost:${PORT}`);
 });
