@@ -1,0 +1,36 @@
+<h1 class="m-2 text-center pt-3">Horario</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        {{#each datos}}
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div id="categoria">
+                            <h3 class="card-title text-uppercase"><strong>{{nomb_materia}}</strong> </h3>
+                            <p class="m-2">{{nomb_nivel}} </p>
+                            <p class="m-2">{{paralelo}} </p>
+                            <div id="content">
+                                <table></br>
+                                    <thead>
+                                        <tr>
+                                            <th>Día</th>
+                                            <th>Hora Inicio </th>
+                                            <th>Hora Fin</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>{{dia_s}}</td>
+                                        <td>{{hora_ini}}</td>
+                                        <td>{{hora_fin}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <h1 class="text-center">No tiene asignado ningun Horario</h1>
+        {{/each}}
+    </div>
+</div>

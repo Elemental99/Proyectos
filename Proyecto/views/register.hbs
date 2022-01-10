@@ -1,0 +1,109 @@
+<div class="container mt-5" style="width: 30%">
+    <div class="card mb-5">
+        <div class="card-header text-center">Registrarse</div>
+        <div class="card-body">
+            <form action="/register" method="post" id="caja-registro">
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="nombres"
+                        id="nombres"
+                        placeholder="Nombre"
+                        autofocus
+                    />
+                    <span id="n-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="apellidos"
+                        id="apellidos"
+                        placeholder="Apellido"
+                    />
+                    <span id="a-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="nombre_usuario"
+                        id="nombre_usuario"
+                        placeholder="Usuario"
+                    />
+                    <span id="nu-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="contrasena"
+                        id="contrasena"
+                        placeholder="Contraseña"
+                    />
+                    <span id="p-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="contrasena2"
+                        id="contrasena2"
+                        placeholder="Confirmar contraseña"
+                    />
+                    <span id="p2-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <select name="rol" id="rol" class="form-select">
+                        <option value="0" selected disabled>
+                            Seleccione el rol
+                        </option>
+                        {{#each datos}}
+                            <option value="{{id_rol}}">{{nombre_rol}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        class="form-control"
+                        type="email"
+                        name="correo"
+                        id="correo"
+                        placeholder="E-mail"
+                    />
+                    <span id="c2-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="direccion"
+                        id="direccion"
+                        placeholder="Dirección"
+                    />
+                    <span id="d-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="text-center">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#miModal"
+                    >
+                        Registrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/coderegister.js"></script>

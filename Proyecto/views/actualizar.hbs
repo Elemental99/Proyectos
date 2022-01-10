@@ -1,0 +1,98 @@
+<div class="container mt-5" style="width: 30%">
+    <div class="card mb-5">
+        <div class="card-header text-center">Actualizar Datos</div>
+        <div class="card-body">
+            <form action="/actualizar" method="post">
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="nombre"
+                        id="nombres"
+                        placeholder="Nombre"
+                        value="{{nombre_usuario.nombre}}"
+                        autofocus
+                    />
+                    <label for="floatingInput">Nombre</label>
+                    <span id="n-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="apellido"
+                        id="apellidos"
+                        placeholder="Apellido"
+                        value="{{nombre_usuario.apellido}}"
+                    />
+                    <label for="floatingInput">Apellido</label>
+                    <span id="a-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="nombre_usuario"
+                        id="nombre_usuario"
+                        placeholder="Usuario"
+                        value="{{nombre_usuario.nombre_usuario}}"
+                    />
+                    <label for="floatingInput">Nombre de Usuario</label>
+                    <span id="c-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="contrasena"
+                        id="contrasena"
+                        placeholder="Contraseña"
+                        value="{{nombre_usuario.contrasena}}"
+                    />
+                    <label for="floatingInput">Contraseña</label>
+                    <span id="p-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        type="email"
+                        name="correo"
+                        id="correo"
+                        placeholder="E-mail"
+                        value="{{nombre_usuario.correo}}"
+                    />
+                    <label for="floatingInput">Correo</label>
+                    <span id="c2-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="direccion"
+                        id="direccion"
+                        placeholder="Dirección"
+                        value="{{nombre_usuario.direccion}}"
+                    />
+                    <label for="floatingInput">Direccion</label>
+                    <span id="d-error" aria-live="assertive"></span>
+                </div>
+
+                <div class="text-center">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#miModal"
+                    >
+                        Actualizar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

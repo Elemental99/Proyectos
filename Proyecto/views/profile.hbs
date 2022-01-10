@@ -1,0 +1,55 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h1>Perfil de Usuario</h1>
+                    <section class="seccion-perfil-usuario">
+                        <div class="perfil-usuario-header">
+                            <div class="perfil-usuario-portada">
+                                <div class="perfil-usuario-avatar">
+                                    <img
+                                        src="/img/avatar.png"
+                                        alt="img-avatar"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="perfil-usuario-body">
+                            <div class="perfil-usuario-bio">
+                                <h3 class="titulo">{{nombre_usuario.nombre}}
+                                    {{nombre_usuario.apellido}}</h3>
+                                <ul class="lista-datos">
+                                    <li><i class="icono fas fa-user"></i>
+                                        <strong>Nombre de Usuario:</strong>
+                                        {{nombre_usuario.nombre_usuario}}
+                                    </li>
+                                    <li><i
+                                            class="icono fas fa-envelope"
+                                        ></i><strong>Coreo:</strong>
+                                        {{nombre_usuario.correo}}
+                                    </li>
+                                </ul>
+                                <ul class="lista-datos">
+                                    <li><i class="icono fas fa-map-signs"></i>
+                                        <strong>Direccion:</strong>
+                                        {{nombre_usuario.direccion}}
+                                    </li>
+                                    <li><i class="icono fas fa-building"></i>
+                                        <strong>Cargo:</strong>
+                                        {{nombre_usuario.nombre_rol}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="text-center">
+                        <a class="btn btn-primary" href="/actualizar">
+                            Actualizar datos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
