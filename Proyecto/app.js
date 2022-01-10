@@ -4,7 +4,7 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const Handlebars = require("handlebars");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 //Invocamos a dotenv: Variables de entorno

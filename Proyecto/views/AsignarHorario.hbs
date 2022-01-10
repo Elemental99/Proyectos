@@ -22,7 +22,8 @@
                     <select name="horario" id="horario" class="form-select">
                         <option value="0" selected disabled>Elige una opción</option>
                         {{#each horario}}
-                            <option value="{{id_horario}}">{{dia_s}}</option>
+                            <option value="{{id_horario}}">{{dia_s}}:
+                                {{hora_ini}}-{{hora_fin}}</option>
                         {{/each}}
                     </select>
                 </div>

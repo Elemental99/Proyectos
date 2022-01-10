@@ -51,6 +51,7 @@ router.get("/vistausuario", [
 router.get("/GenerarHorario", authController.isAuthenticated, (req, res) => {
     res.render("GenerarHorario", {
         nombre_usuario: req.nombre_usuario,
+        rol: req.estud,
     });
 });
 

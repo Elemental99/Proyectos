@@ -201,7 +201,8 @@ exports.editar = (req, res) => {
         };
 
         if (!nombre || !apellido || !contrasena || !correo || !direccion) {
-            res.render("actualizar", {
+            res.redirect("actualizar", {
+                nombre_usuario: req.nombre_usuario,
                 message: "Ingrese todos los campos",
             });
         } else {
@@ -283,6 +284,7 @@ exports.consultNuevoHorario = (req, res) => {
                 nombre_usuario: req.nombre_usuario,
                 docente: req.docente,
                 nivel: req.nivel,
+                rol: req.estud,
             });
         });
     });
@@ -298,22 +300,31 @@ exports.consultGenerar = (req, res) => {
             if (error) {
                 console.log(error);
             }
-            req.paralelo = results;
-            db.query(
-                "SELECT * FROM materia WHERE id_nivel = ?",
-                [nivel],
-                (error, resp) => {
-                    if (error) {
-                        console.log(error);
+            if (!nivel) {
+                res.render("nuevohorario", {
+                    nombre_usuario: req.nombre_usuario,
+                    rol: req.estud,
+                    message: "Coloque todos los campos",
+                });
+            } else {
+                req.paralelo = results;
+                db.query(
+                    "SELECT * FROM materia WHERE id_nivel = ?",
+                    [nivel],
+                    (error, resp) => {
+                        if (error) {
+                            console.log(error);
+                        }
+                        req.materia = resp;
+                        res.render("GenerarHorario", {
+                            nombre_usuario: req.nombre_usuario,
+                            paralelo: req.paralelo,
+                            materia: req.materia,
+                            rol: req.estud,
+                        });
                     }
-                    req.materia = resp;
-                    res.render("GenerarHorario", {
-                        nombre_usuario: req.nombre_usuario,
-                        paralelo: req.paralelo,
-                        materia: req.materia,
-                    });
-                }
-            );
+                );
+            }
         }
     );
 };
@@ -323,6 +334,7 @@ exports.GenerarHorario = (req, res) => {
     const { hora_inicio, hora_fin, materia, dia_s } = req.body;
     if (!hora_fin || !hora_inicio || !materia || !dia_s) {
         res.render("GenerarHorario", {
+            nombre_usuario: req.nombre_usuario,
             message: "Ingrese todos los campos",
         });
     } else {
