@@ -260,12 +260,31 @@ exports.contact = (req, res) => {
             nombre_usuario: req.nombre_usuario,
             message: "Ingrese todos los campos",
         });
-    } else {
+    }
+    /* } else {
         res.render("contact", {
             nombre_usuario: req.nombre_usuario,
             message: "Datos enviados correctamente",
         });
-    }
+    } */
+    db.query(
+        "INSERT INTO contacto SET ?",
+        {
+            nombre_cont: nombre,
+            telefono_cont: telefono,
+            correo_cont: correo,
+            mensaje_cont: mensaje,
+        },
+        (error, results) => {
+            if (error) {
+                console.log(error);
+            } else {
+                return res.render("contact", {
+                    message: "Datos enviados correctamente",
+                });
+            }
+        }
+    );
 };
 
 //Consulta
