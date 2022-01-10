@@ -93,17 +93,15 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { nombre_usuario, contrasena } = req.body;
-        console.log(nombre_usuario, contrasena);
         if (!nombre_usuario || !contrasena) {
             return res.render("login", {
                 message: "Ingrese nombre de Usuario y/o contraseña",
             });
         } else {
             await db.query(
-                "SELECT * FROM usuario WHERE nombre_usuario = ? and contrasena = ?",
-                [nombre_usuario, contrasena],
+                "SELECT * FROM usuario WHERE nombre_usuario = ?",
+                [nombre_usuario],
                 async (error, results) => {
-                    console.log(results[0]);
                     if (results.length == 0) {
                         return res.render("login", {
                             message:
