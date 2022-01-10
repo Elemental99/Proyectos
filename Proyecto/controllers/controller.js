@@ -99,8 +99,8 @@ exports.login = async (req, res) => {
             });
         } else {
             await db.query(
-                "SELECT * FROM usuario WHERE nombre_usuario = ?",
-                [nombre_usuario],
+                "SELECT * FROM usuario WHERE nombre_usuario = ? and contrasena = ?",
+                [nombre_usuario, contrasena],
                 async (error, results) => {
                     if (results.length == 0) {
                         return res.render("login", {
